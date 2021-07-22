@@ -4,12 +4,12 @@
       <div class="logobar">
         <img
           height="100%"
-          width="100px"
-          src="https://via.placeholder.com/150/92c952"
+          class="ml-3"
+          src="https://www.computing.psu.ac.th/th/wp-content/uploads/2018/03/Logo-PSU-TH-01.png"
           alt=""
         />
       </div>
-      <div class="desktop-homepage-navbar mx-3 my-3">
+      <div class="desktop-homepage-navbar mx-3 mt-3 mb-1">
         <router-link
           to="/"
           class="desktop-homepage-navbar-item"
@@ -23,43 +23,45 @@
           >หนังสือของฉัน</router-link
         >
       </div>
-      <div class="menu-mobile" @click="isShowMenuMobile = !isShowMenuMobile">
+      <div class="desktop-seperator mb-3"></div>
+      <div class="menu-mobile-top" @click="isShowMenuMobile = !isShowMenuMobile">
         เมนู
       </div>
       <div
         :class="
-          `menu-mobile-item-container ${
+          `menu-mobile ${
             isShowMenuMobile
-              ? 'menu-mobile-item-container-show'
-              : 'menu-mobile-item-container-hide'
+              ? 'menu-mobile--show'
+              : 'menu-mobile--hide'
           }`
         "
       >
         <router-link
           to="/"
-          class="menu-mobile-item"
-          active-class="menu-mobile-item-active"
+          class="item"
+          active-class="item--active"
         >
           หน้าหลัก
         </router-link>
         <router-link
           to="/mylend"
-          class="menu-mobile-item"
-          active-class="menu-mobile-item-active"
+          class="item"
+          active-class="item--active"
         >
           หนังสือของฉัน
         </router-link>
       </div>
+      <div class="mobile-seperator mb-3"></div>
       <div class="content">
         <div class="desktop-content-category">
-          <label for="">collection</label>
+          <label for="">collections</label>
           <ul>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
-            <li>test</li>
+            <li>collection <a href="/">(1)</a> </li>
+            <li>collection <a href="/">(1)</a></li>
+            <li>collection <a href="/">(1)</a></li>
+            <li>collection <a href="/">(1)</a></li>
+            <li>collection <a href="/">(1)</a></li>
+            <li>collection <a href="/">(1)</a></li>
           </ul>
         </div>
         <div class="content-book-shelf">
@@ -98,7 +100,7 @@ export default {
   }
   .home-page {
     min-height: 100vh;
-    background-color: cadetblue;
+    background-color: white;
     display: flex;
     justify-content: center;
   }
@@ -108,7 +110,7 @@ export default {
     width: 1024px;
   }
   .logobar {
-    height: 60px;
+    height: 80px;
     width: 100%;
   }
   .desktop-homepage-navbar {
@@ -124,20 +126,20 @@ export default {
   }
   .content .desktop-content-category {
     width: 40%;
-    background-color: blue;
+    background-color: white;
     padding: 15px;
   }
   .content .content-book-shelf {
     width: 60%;
-    background-color: blueviolet;
+    background-color: #fcfcfc;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    box-shadow: inset 0 0 1px rgb(0 0 0 / 30%);
   }
   .content .content-book-shelf .book-container {
     width: 100%;
     flex-grow: 1;
-    background-color: brown;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -159,44 +161,98 @@ export default {
     color: white;
     border-radius: 5px;
   }
+  .desktop-seperator {
+    width: 100%;
+    height: 10px;
+    border-bottom: 0.5px solid #dcdcdc;
+  }
 }
 @media all and (max-width: 1023px) {
   [class*="desktop"] {
     display: none;
   }
+  .home-page {
+    min-height: 100vh;
+    background-color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+  }
+  .home-page-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
   .logobar {
     height: 40px;
     width: 100%;
   }
-  .menu-mobile {
+  .menu-mobile-top {
     margin-top: 15px;
     background-color: #1976d2;
     color: white;
     padding: 5px;
   }
-  .menu-mobile-item-container {
+  .menu-mobile {
     width: 100%;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
-    transition: max-height 0.2s;
     overflow-y: hidden;
+    -webkit-transition: max-height 0.8s;
+	  -moz-transition: max-height 0.8s;
+	  transition: max-height 0.8s;
   }
-  .menu-mobile-item-container-hide {
+  .menu-mobile--hide {
     max-height: 0px !important;
   }
-  .menu-mobile-item-container-show {
-    max-height: 400px !important;
+  .menu-mobile--show {
+    max-height: 200px !important;
   }
-  .menu-mobile-item-container .menu-mobile-item {
+  .menu-mobile .item {
     background-color: white;
     padding: 5px;
     color: black;
+    margin: 2px;
+    border: 0.5px solid #dcdcdc;
+    border-radius: 5px;
   }
-  .menu-mobile-item-container .menu-mobile-item-active {
+  .menu-mobile .item--active {
     background-color: #1976d2;
     padding: 5px;
     color: white;
+  }
+  .mobile-seperator {
+    width: 100%;
+    height: 10px;
+    border-bottom: 0.5px solid #dcdcdc;
+  }
+  .content {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+  }
+  .content .content-book-shelf {
+    width: 100%;
+    background-color: #fcfcfc;
+    padding: 15px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 1px rgb(0 0 0 / 30%);
+  }
+  .content .content-book-shelf .book-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  .content .content-book-shelf .book-container .book {
+    width: 100%;
+    height: 500px;
+    background-color: burlywood;
+    margin: 15px 10px;
   }
 }
 </style>
